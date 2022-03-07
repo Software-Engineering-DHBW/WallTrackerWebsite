@@ -1,89 +1,47 @@
-import {Button, List, ListItem, TextField} from '@material-ui/core';
 import React from 'react';
-import { useState } from 'react';
-import axios from 'axios';
+import Header from "./Components/Header";
+import {createTheme, ThemeProvider} from '@mui/material/styles';
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import Home from "./Views/Home";
+import Stats from "./Views/Stats";
+import Profile from "./Views/Profile";
+import Friends from "./Views/Friends";
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            light: '#63686c',
+            main: '#393e41',
+            dark: '#13181b',
+            contrastText: '#ffffff',
+        },
+        secondary: {
+            light: '#9dc1f2',
+            main: '#6c91bf',
+            dark: '#3c648f',
+            contrastText: '#000000',
+        },
+    },
+});
+
 
 function App() {
-    const [boulders, setBoulders] = useState([{id: 0, difficulty: 0}]);
-    const boulderApiUrl = "http://localhost:8080/boulder";
-
-    const fetchData = async () => {
-        const response = await axios.get(boulderApiUrl)
-        setBoulders(response.data)
-    }
-
     return (
         <div className="App">
-            <h1>Boulders</h1>
-            <h2>Fetch a List of all Boulders in the Database</h2>
+            <ThemeProvider theme={theme}>
+                <Router>
+                    <Header />
 
-            {/*Fetch the data*/}
-            <div>
-                <button className="fetchButton" onClick={fetchData}>
-                    Fetch Boulders
-                </button>
-            </div>
-
-            {/*Display Boulders*/}
-            <div className="boulders">
-                {boulders[0].id != 0  &&
-                    boulders.map((boulder, index) => {
-                    const difficulty = boulder.difficulty
-
-                    return (
-                        <div className="boulder" key={index}>
-                            <h3>Boulder {index + 1}</h3>
-                            <h4>Difficulty: {difficulty}</h4>
-                        </div>
-                    );
-                    })
-                }
-            </div>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/stats" element={<Stats />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/friends" element={<Friends />} />
+                    </Routes>
+                </Router>
+            </ThemeProvider>
         </div>
     );
-}
-
-interface IState {
-    boulders?: [{id: number, difficulty: number}];
-}
-
-interface IProps {
-
-}
-
-class A extends React.Component<IProps, IState> {
-
-    constructor(props: IProps) {
-        super(props);
-        this.state = {boulders: [{id: 0, difficulty: 0}]}
-    }
-
-    async getBoulders() {
-        const response = await fetch("http://localhost:8080/boulder");
-        const data = await response.json();
-        this.setState({boulders: data})
-    }
-
-
-    render() {
-        return (
-            <div>
-                <h1 style={{textAlign: "center"}}>Hallo jonas</h1>
-                <h2>Penis</h2>
-                <div style={{padding: 16, margin: 16}}>
-                    <Button variant={"contained"}
-                            onClick={this.getBoulders}>
-                        Boulders
-                    </Button>
-                </div>
-                <div>
-                    <List>
-                        {this.state.boulders!.map(boulder => <ListItem><span>{boulder.id} {boulder.difficulty}</span></ListItem>)}
-                    </List>
-                </div>
-            </div>
-        )
-    }
 }
 
 export default App;
