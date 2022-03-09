@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from "./Components/Header";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Home from "./Views/Home";
 import Stats from "./Views/Stats";
 import Profile from "./Views/Profile";
 import Friends from "./Views/Friends";
+import Navigation from "./Components/Navigation";
 
 const theme = createTheme({
     palette: {
@@ -30,7 +30,7 @@ function App() {
         <div className="App">
             <ThemeProvider theme={theme}>
                 <Router>
-                    <Header />
+                    <Navigation />
 
                     <Routes>
                         <Route path="/" element={<Home />} />

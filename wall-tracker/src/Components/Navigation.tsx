@@ -1,97 +1,49 @@
-import React, {useState} from 'react'
-import MenuIcon from "@mui/icons-material/Menu";
-import {Avatar, Divider, IconButton, ListItemIcon, Menu, MenuItem} from "@mui/material";
-import {Home, Logout, People, QueryStats} from "@mui/icons-material";
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
+import * as FaIcons from "react-icons/fa";
+import * as AiIcons from "react-icons/ai";
+import { SidebarData } from "./SidebarData";
+import "../Css/Navigation.css";
+import { IconContext } from "react-icons";
 
 function Navigation(){
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    const [sidebar, setSidebar] = useState(false);
 
+    const showSidebar = () => setSidebar(!sidebar);
+
+    if(sidebar){
+        console.log("hell")
+    }
     return(
-        <React.Fragment>
-            <IconButton
-                size="large"
-                edge="end"
-                color="inherit"
-                aria-label="menu"
-                sx={{ ml: 2 }}
-                onClick={handleClick}
-            >
-                <MenuIcon />
-            </IconButton>
-            <Menu
-                anchorEl={anchorEl}
-                id="account-menu"
-                open={open}
-                onClose={handleClose}
-                onClick={handleClose}
-                PaperProps={{
-                    elevation: 0,
-                    sx: {
-                        overflow: 'visible',
-                        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                        mt: 1.5,
-                        '& .MuiAvatar-root': {
-                            width: 32,
-                            height: 32,
-                            ml: -0.5,
-                            mr: 1,
-                        },
-                        '&:before': {
-                            content: '""',
-                            display: 'block',
-                            position: 'absolute',
-                            top: 0,
-                            right: 14,
-                            width: 10,
-                            height: 10,
-                            bgcolor: 'background.paper',
-                            transform: 'translateY(-50%) rotate(45deg)',
-                            zIndex: 0,
-                        },
-                    },
-                }}
-                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-            >
-                <MenuItem component={Link} to={'/'}>
-                        <ListItemIcon>
-                            <Home />
-                        </ListItemIcon>
-                        Home
-                </MenuItem>
-                <MenuItem component={Link} to={'/stats'}>
-                        <ListItemIcon>
-                            <QueryStats />
-                        </ListItemIcon>
-                        Stats
-                </MenuItem>
-                <MenuItem component={Link} to={'/friends'}>
-                        <ListItemIcon>
-                            <People />
-                        </ListItemIcon>
-                        Friends
-                </MenuItem>
-                <Divider />
-                <MenuItem component={Link} to={'/profile'}>
-                        <Avatar /> Profile
-                </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
-                        <Logout fontSize="small" />
-                    </ListItemIcon>
-                    Logout
-                </MenuItem>
-            </Menu>
-        </React.Fragment>
-
+        <>
+            <IconContext.Provider value={{color: '#fff'}}>
+                <div className="navbar">
+                    <Link to="#" className="menu-bars">
+                        <FaIcons.FaBars className="menu-bars" onClick={showSidebar}/>
+                    </Link>
+                    <span className="main-text">Wall Tracker</span>
+                </div>
+                <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
+                    <ul className="nav-menu-items" onClick={showSidebar}>
+                        <li className="navbar-toggle">
+                            <Link to="#" className="menu-close">
+                                <AiIcons.AiOutlineClose />
+                            </Link>
+                        </li>
+                        { SidebarData.map((item, index) => {
+                            return(
+                                <li key={index} className={item.cName}>
+                                    <Link to={item.path}>
+                                        {item.icon}
+                                        <span className="span">{item.title}</span>
+                                    </Link>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </nav>
+            </IconContext.Provider>
+        </>
     )
 }
 
