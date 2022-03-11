@@ -1,31 +1,29 @@
 import React from 'react';
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io5"
+import {BarChart, People, Person, Home} from "@mui/icons-material/";
 
 export const SidebarData = [
     {
         title: "Home",
         path: "/",
-        icon: <AiIcons.AiFillHome />,
-        cName: "nav-text"
+        icon: <Home />,
+        cName: "navText"
     },
     {
         title: "Stats",
         path: "/stats",
-        icon: <IoIcons.IoStatsChart />,
-        cName: "nav-text"
+        icon: <BarChart />,
+        cName: "navText"
     },
     {
         title: "Friends",
         path: "/friends",
-        icon: <FaIcons.FaUserFriends />,
-        cName: "nav-text"
+        icon: <People />,
+        cName: "navText"
     },
     {
         title: "Profile",
         path: "/profile",
-        icon: <IoIcons.IoPersonCircleOutline />,
-        cName: "nav-text"
+        icon: <Person />,
+        cName: "navText"
     }
 ]
