@@ -3,6 +3,7 @@ import {Button, Grid, IconButton, Typography} from "@mui/material";
 import {AccountCircle, QrCode} from "@mui/icons-material";
 import {Link} from "react-router-dom";
 
+
 const TopContent = () => {
     return(
         <>
@@ -79,6 +80,7 @@ const Home = () => {
                         <BottomContent />
                     </Grid>
                     <Grid item xs={0} md={2} />
+
                 </Grid>
             </Grid>
         </>

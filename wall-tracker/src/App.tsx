@@ -1,13 +1,13 @@
 import React from 'react';
-import Header from "./Components/Header";
-import {createTheme, ThemeProvider} from '@mui/material/styles';
+import { ThemeProvider, createTheme} from '@mui/material/styles'
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Home from "./Views/Home";
 import Stats from "./Views/Stats";
 import Profile from "./Views/Profile";
 import Friends from "./Views/Friends";
+import TempDrawer from "./Components/TempDrawer";
 
-const theme = createTheme({
+const custom_theme = createTheme({
     palette: {
         primary: {
             light: '#63686c',
@@ -28,9 +28,9 @@ const theme = createTheme({
 function App() {
     return (
         <div className="App">
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={custom_theme}>
                 <Router>
-                    <Header />
+                    <TempDrawer />
 
                     <Routes>
                         <Route path="/" element={<Home />} />
