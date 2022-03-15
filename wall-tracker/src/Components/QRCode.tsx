@@ -14,12 +14,18 @@ function QRCode() {
         }
         if (!!result){
             setScanResult(result?.text);
-            setInfo("QR-Code scanned");
         }
     }
 
     useEffect(() => {
-        setLink(`/boulder/${scanResult}`)
+        if(Number(scanResult)) {
+            setLink(`/boulder/${scanResult}`)
+            setInfo("QR-Code scanned");
+        }
+        else if(!scanResult) {}
+        else{
+            setInfo("Invalid QR-Code");
+        }
     })
 
     return(
@@ -56,6 +62,10 @@ function QRCode() {
                     <Button
                         component={Link} to={link}
                         variant="contained"
+                        size="large"
+                        sx={{
+                            marginBottom: 7
+                        }}
                     >
                         Rate Boulder
                     </Button>
