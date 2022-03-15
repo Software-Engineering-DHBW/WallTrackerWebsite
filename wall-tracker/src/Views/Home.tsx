@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 const TopContent = () => {
     return(
         <>
-            <IconButton color="secondary">
+            <IconButton color="secondary" component={Link} to="/profile">
                 <AccountCircle style={{fontSize: 100}}/>
             </IconButton>
             <Typography marginTop={1}>
@@ -22,11 +22,11 @@ const TopContent = () => {
 const BottomContent = () => {
     return(
         <>
-            <IconButton color="secondary">
+            <IconButton color="secondary" component={Link} to="/qr-code">
                 <QrCode style={{fontSize: 100}}/>
             </IconButton>
             <Typography marginTop={1}>
-                <Button>
+                <Button component={Link} to="/qr-code">
                     Click to scan QR-Code
                 </Button>
             </Typography>
