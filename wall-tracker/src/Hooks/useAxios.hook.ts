@@ -1,28 +1,26 @@
-import axios, {AxiosRequestConfig} from 'axios';
+import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 import { useEffect, useState } from 'react';
 
-const useAxios = <T>({ url, method}: AxiosRequestConfig) => {
-    const [responses, setResponses] = useState<T[] | null>();
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+const useAxios = ( url: string): [any, boolean, boolean] => {
+    const [responses, setResponses] = useState<any>();
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isError, setIsError] = useState<boolean>(false);
 
     useEffect(() => {
-        setIsLoading(true);
-        axios({url: `http://localhost:8080/${url}`, method: method})
+        axios({url: `http://localhost:8080/${url}`, method: "get"})
             .then((resp) => {
-                setIsLoading(false);
-                setIsError(false);
                 setResponses(resp.data);
             })
             .catch((err) => {
                 setIsLoading(false);
                 setIsError(true);
-                setResponses(null);
+            })
+            .finally(() => {
+                setIsLoading(false);
             });
-        return () => {};
     }, [url]);
 
-    return {responses, isLoading, isError} as const;
+    return [responses, isLoading, isError];
 };
 
 export default useAxios;
