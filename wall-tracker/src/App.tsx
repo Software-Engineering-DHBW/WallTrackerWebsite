@@ -7,6 +7,7 @@ import Profile from "./Views/Profile";
 import Friends from "./Views/Friends";
 import TempDrawer from "./Components/TempDrawer";
 import QRCode from "./Components/QRCode";
+import Rating from "./Views/Rating";
 
 const custom_theme = createTheme({
     palette: {
@@ -39,6 +40,7 @@ function App() {
                         <Route path="/profile" element={<Profile />} />
                         <Route path="/friends" element={<Friends />} />
                         <Route path="/qr-code" element={<QRCode />} />
+                        <Route path="/rating/:id" element={<Rating />} />
                     </Routes>
                 </Router>
             </ThemeProvider>

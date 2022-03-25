@@ -19,7 +19,7 @@ function QRCode() {
 
     useEffect(() => {
         if(Number(scanResult)) {
-            setLink(`/boulder/${scanResult}`)
+            setLink(`/rating/${scanResult}`)
             setInfo("QR-Code scanned");
         }
         else if(!scanResult) {}
