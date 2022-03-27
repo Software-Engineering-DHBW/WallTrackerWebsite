@@ -10,7 +10,7 @@ const SelectedLocation = () => {
     const [rating, setRating] = useState()
 
     const getLocation = async () => {
-        await axios.get(`http://localhost:8080/location/id/${id}`)
+        await axios.get(`http://localhost:8080/location/id/${id}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
             .then(res => {
                 const location = res.data;
                 setLocation(location)
@@ -23,7 +23,7 @@ const SelectedLocation = () => {
     }
 
     const getLocationRating = async () => {
-        await axios.get(`http://localhost:8080/location/id/${id}/ratingsmean`)
+        await axios.get(`http://localhost:8080/location/id/${id}/ratingsmean`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
             .then(res => {
                 const rating = res.data;
                 setRating(rating)
