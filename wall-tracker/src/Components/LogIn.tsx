@@ -19,11 +19,10 @@ export default function SignIn() {
         await axios.post("http://localhost:8080/auth/login", {
             "emailId": data.get("email"),
             "password": data.get("password")
-        }, {
-            withCredentials: false
         }
             ).then(function (response) {
-            console.log(response);
+                localStorage.setItem("user", response.data)
+                console.log(response);
         })
             .catch(function (error) {
                 console.log(error);

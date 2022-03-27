@@ -3,6 +3,7 @@ import {Box, Button, Grid, Rating as RatingBox, TextField, Typography} from "@mu
 import {Star} from "@mui/icons-material";
 import {Link, useParams} from "react-router-dom";
 import axios from "axios";
+import jwt_decode from "jwt-decode"
 
 const labels: { [index: string]: string } = {
     1: 'Shit',
@@ -17,6 +18,10 @@ const Rating = () => {
     const [value, setValue] = React.useState<number | null>(3);
     const [hover, setHover] = React.useState(-1);
     const [comment, setComment] = React.useState('Kommentar');
+    const token = localStorage.getItem("user") || ""
+    const decoded: any = jwt_decode(token)
+    const userId = parseInt(decoded.userId)
+
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setComment(event.target.value);
@@ -30,9 +35,14 @@ const Rating = () => {
                 "boulderId": id
             },
             "user": {
-                "userId": 1
+                "userId": userId
             }
-        }).then(function (response) {
+        },
+            {headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token
+            }}
+        ).then(function (response) {
             console.log(response);
         })
             .catch(function (error) {
