@@ -12,7 +12,8 @@ export interface IUsers {
 }
 
 export interface ILocations {
-
+    locationId: number,
+    locationName: String
 }
 
 export interface IRouteSetter {

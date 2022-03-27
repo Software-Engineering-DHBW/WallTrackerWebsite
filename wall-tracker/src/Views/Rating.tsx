@@ -23,10 +23,21 @@ const Rating = () => {
     };
 
     const postRating = () => {
-        axios.post("placeholder", {
+        axios.post("http://localhost:8080/rating", {
             "rating": value,
-            "comment": comment
+            "review": comment,
+            "boulder":{
+                "boulderId": id
+            },
+            "user": {
+                "userId": 1
+            }
+        }).then(function (response) {
+            console.log(response);
         })
+            .catch(function (error) {
+                console.log(error);
+            });
     };
 
     return(
