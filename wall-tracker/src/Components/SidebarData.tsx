@@ -1,5 +1,5 @@
 import React from 'react';
-import {BarChart, People, Person, Home} from "@mui/icons-material/";
+import {BarChart, People, Person, Home, LocationOn} from "@mui/icons-material/";
 
 export const SidebarData = [
     {
@@ -25,5 +25,10 @@ export const SidebarData = [
         path: "/profile",
         icon: <Person />,
         cName: "navText"
+    },
+    {
+        title: "Location",
+        path: "/location",
+        icon: <LocationOn />
     }
 ]
