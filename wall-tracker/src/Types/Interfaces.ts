@@ -11,7 +11,15 @@ export interface IBoulder {
 }
 
 export interface IRatings {
-
+    ratingsId: number,
+    rating: number,
+    review: string,
+    boulder: {
+        boulderId: number
+    },
+    user: {
+        userId: number
+    }
 }
 
 export interface IUsers {

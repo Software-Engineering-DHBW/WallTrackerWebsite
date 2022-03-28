@@ -7,10 +7,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
+import {Grid} from "@mui/material";
 
 export default function SignIn() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -77,6 +78,16 @@ export default function SignIn() {
                         >
                             Sign In
                         </Button>
+                        <Grid container>
+                            <Grid item>
+                                <Button
+                                    component={Link}
+                                    to="/register"
+                                >
+                                    No Account? Sign Up!
+                                </Button>
+                            </Grid>
+                        </Grid>
                     </Box>
                 </Box>
             </Container>
