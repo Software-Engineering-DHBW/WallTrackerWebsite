@@ -1,6 +1,13 @@
 export interface IBoulder {
-    id: number,
-    difficulty: number
+    boulderId: number,
+    difficulty: number,
+    routeSetter: {
+        routeSetter: number
+    },
+    location: {
+        location: number
+    },
+    ratingsMean: number
 }
 
 export interface IRatings {
@@ -8,7 +15,10 @@ export interface IRatings {
 }
 
 export interface IUsers {
-
+    userId: number,
+    firstName: string,
+    lastName: string,
+    emailId: string
 }
 
 export interface ILocations {
