@@ -32,6 +32,8 @@ const custom_theme = createTheme({
     },
 });
 
+//Globale Variable für alle Axios Requests
+globalThis.url = "192.168.0.131"
 
 function App() {
     return (

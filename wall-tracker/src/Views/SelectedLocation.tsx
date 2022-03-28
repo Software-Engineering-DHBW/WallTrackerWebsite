@@ -13,7 +13,7 @@ const SelectedLocation = () => {
     const [boulders, setBoulders] = useState<IBoulder[]>([])
 
     const getLocation = async () => {
-        await axios.get(`http://192.168.0.131:8080/location/id/${id}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
+        await axios.get(`http://${globalThis.url}:8080/location/id/${id}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
             .then(res => {
                 const location = res.data;
                 setLocation(location)
@@ -26,7 +26,7 @@ const SelectedLocation = () => {
     }
 
     const getLocationRating = async () => {
-        await axios.get(`http://192.168.0.131:8080/location/id/${id}/ratingsmean`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
+        await axios.get(`http://${globalThis.url}:8080/location/id/${id}/ratingsmean`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
             .then(res => {
                 if(res.data) {
                     const rating = res.data;
@@ -41,7 +41,7 @@ const SelectedLocation = () => {
     }
 
     const getLocationBoulders = async () => {
-        await axios.get(`http://192.168.0.131:8080/boulder/location/${id}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
+        await axios.get(`http://${globalThis.url}:8080/boulder/location/${id}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
             .then(res => {
                 const boulders = res.data;
                 setBoulders(boulders)
