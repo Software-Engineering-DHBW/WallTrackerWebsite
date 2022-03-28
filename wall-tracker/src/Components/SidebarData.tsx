@@ -14,12 +14,12 @@ export const SidebarData = [
         icon: <BarChart />,
         cName: "navText"
     },
-    {
+    /*{
         title: "Friends",
         path: "/friends",
         icon: <People />,
         cName: "navText"
-    },
+    },*/
     {
         title: "Profile",
         path: "/profile",
