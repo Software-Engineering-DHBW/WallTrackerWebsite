@@ -13,6 +13,7 @@ import Location from "./Views/Location"
 import SelectedLocation from "./Views/SelectedLocation";
 import LogIn from "./Components/LogIn";
 import BoulderOfLocation from "./Views/BoulderOfLocation";
+import RequireAuth from "./Components/RequireAuth";
 
 const custom_theme = createTheme({
     palette: {
@@ -42,15 +43,18 @@ function App() {
                     <Routes>
                         <Route path="/register" element={<Register />} />
                         <Route path="/login" element={<LogIn />} />
-                        <Route path="/" element={<Home />} />
-                        <Route path="/stats" element={<Stats />} />
-                        <Route path="/profile" element={<Profile />} />
-                        <Route path="/friends" element={<Friends />} />
-                        <Route path="/qr-code" element={<QRCode />} />
-                        <Route path="/rating/:id" element={<Rating />} />
-                        <Route path="/location" element={<Location />} />
-                        <Route path="/location/selected/:id" element={<SelectedLocation />} />
-                        <Route path="/location/boulder/:id" element={<BoulderOfLocation />} />
+
+                        <Route element={<RequireAuth />}>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/stats" element={<Stats />} />
+                            <Route path="/profile" element={<Profile />} />
+                            <Route path="/friends" element={<Friends />} />
+                            <Route path="/qr-code" element={<QRCode />} />
+                            <Route path="/rating/:id" element={<Rating />} />
+                            <Route path="/location" element={<Location />} />
+                            <Route path="/location/selected/:id" element={<SelectedLocation />} />
+                            <Route path="/location/boulder/:id" element={<BoulderOfLocation />} />
+                        </Route>
                     </Routes>
                 </Router>
             </ThemeProvider>
