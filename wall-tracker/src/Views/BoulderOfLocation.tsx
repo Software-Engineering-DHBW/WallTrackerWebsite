@@ -13,7 +13,7 @@ const BoulderOfLocation = () => {
     const [rating, setRating] = useState(0)
 
     const getRating = async () => {
-        await axios.get(`http://localhost:8080/boulder/id/${id}/ratingsmean`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
+        await axios.get(`http://192.168.0.131:8080/boulder/id/${id}/ratingsmean`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
             .then(res => {
                 if(res.data) {
                     const rating = res.data;
@@ -28,7 +28,7 @@ const BoulderOfLocation = () => {
     }
 
     const getBoulder = async () => {
-        await axios.get(`http://localhost:8080/boulder/id/${id}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
+        await axios.get(`http://192.168.0.131:8080/boulder/id/${id}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
             .then(res => {
                 if(res.data) {
                     const boulder = res.data;
@@ -43,7 +43,7 @@ const BoulderOfLocation = () => {
     }
 
     const getRatings = async () => {
-        await axios.get(`http://localhost:8080/rating/boulder/${id}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
+        await axios.get(`http://192.168.0.131:8080/rating/boulder/${id}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
             .then(res => {
                 if(res.data) {
                     const ratings = res.data;

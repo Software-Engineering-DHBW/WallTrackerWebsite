@@ -10,7 +10,7 @@ const Location = () => {
     const token = localStorage.getItem("user") || ""
 
     const getLocations = async () => {
-        await axios.get("http://localhost:8080/location", {headers: {Authorization:`Bearer ${token}`}})
+        await axios.get("http://192.168.0.131:8080/location", {headers: {Authorization:`Bearer ${token}`}})
             .then(res => {
                 const locations = res.data;
                 setLocations(locations)
