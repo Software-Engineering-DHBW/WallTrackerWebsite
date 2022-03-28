@@ -15,7 +15,7 @@ const Profile = () => {
     const userId = parseInt(decoded.userId)
 
     const getUser = async () => {
-        await axios.get(`http://192.168.0.131:8080/user/id/${userId}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
+        await axios.get(`http://${globalThis.url}:8080/user/id/${userId}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
             .then(res => {
                 const user = res.data;
                 setUser(user)

@@ -3,11 +3,11 @@ import {IRatings, IUsers} from "../Types/Interfaces";
 import {Card, CardContent, Typography} from "@mui/material";
 import axios from "axios";
 
-const BoulderCard = (props: IRatings) => {
+const RatingCard = (props: IRatings) => {
     const [user, setUser] = useState<IUsers>()
 
     const getUser = async () => {
-        await axios.get(`http://192.168.0.131:8080/user/id/${props.user.userId}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
+        await axios.get(`http://${globalThis.url}:8080/user/id/${props.user.userId}`, {headers:{Authorization: "Bearer " + localStorage.getItem("user") || ""}})
             .then(res => {
                 if(res.data) {
                     const user = res.data;
@@ -60,4 +60,4 @@ const BoulderCard = (props: IRatings) => {
     )
 }
 
-export default BoulderCard
+export default RatingCard

@@ -17,7 +17,7 @@ export default function Register() {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
 
-        await axios.post("http://192.168.0.131:8080/auth/register", {
+        await axios.post(`http://${globalThis.url}:8080/auth/register`, {
             "firstName": data.get("firstName"),
             "lastName": data.get("lastName"),
             "emailId": data.get("email"),

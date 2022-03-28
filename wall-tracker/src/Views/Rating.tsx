@@ -28,7 +28,7 @@ const Rating = () => {
     };
 
     const postRating = () => {
-        axios.post("http://192.168.0.131:8080/rating", {
+        axios.post(`http://${globalThis.url}:8080/rating`, {
             "rating": value,
             "review": comment,
             "boulder":{
