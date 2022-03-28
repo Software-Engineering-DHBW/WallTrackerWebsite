@@ -17,7 +17,7 @@ export default function SignIn() {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
 
-        await axios.post("http://localhost:8080/auth/login", {
+        await axios.post("http://192.168.0.131:8080/auth/login", {
             "emailId": data.get("email"),
             "password": data.get("password")
         }

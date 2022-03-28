@@ -44,7 +44,7 @@ function QRCode() {
                 >
                     <Box >
                     <QrReader
-                        constraints={{facingMode: 'user'}}
+                        constraints={{facingMode: 'environment'}}
                         onResult={handleScan}
                         scanDelay={300}
                         containerStyle={{width: '100%'}}
