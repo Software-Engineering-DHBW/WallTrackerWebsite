@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {Box, List, ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
 import {SidebarData} from "./SidebarData";
 import {Link} from 'react-router-dom';
-import {AppBar, IconButton, Toolbar, Typography, Drawer} from "@mui/material";
-import {Menu, Close} from "@mui/icons-material";
+import {AppBar, IconButton, Toolbar, Typography, Drawer, ListItemButton} from "@mui/material";
+import {Menu, Close, LogoutOutlined} from "@mui/icons-material";
+import Logout from "./Logout";
 
 function TempDrawer() {
     const [showDrawer, setShowDrawer] = useState(false);
@@ -65,6 +66,21 @@ function TempDrawer() {
                                             />
                                         </ListItem>
                                     ))}
+                                    <ListItemButton
+                                        sx={{
+                                            position: "fixed",
+                                            bottom: 15,
+                                            textAlign:"center",
+                                            mx: "auto"
+                                        }}
+                                    >
+                                        <ListItemIcon
+                                            color="inherit"
+                                        >
+                                            <LogoutOutlined />
+                                        </ListItemIcon>
+                                        <Logout />
+                                    </ListItemButton>
                                 </List>
                             </Box>
                         </Drawer>

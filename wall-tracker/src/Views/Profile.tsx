@@ -4,6 +4,7 @@ import {AccountCircle} from "@mui/icons-material";
 import {IUsers} from "../Types/Interfaces"
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import Logout from "../Components/Logout";
 
 
 const Profile = () => {
@@ -56,6 +57,15 @@ const Profile = () => {
             </Grid>
             <Grid item>
                 E-Mail: {user?.emailId}
+            </Grid>
+            <Grid item
+                  sx={{
+                      position: "fixed",
+                      bottom: 25,
+                      textAlign:"center",
+                  }}
+            >
+                <Logout />
             </Grid>
         </Grid>
     )
