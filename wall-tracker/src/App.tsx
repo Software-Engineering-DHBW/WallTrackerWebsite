@@ -48,7 +48,7 @@ function App() {
                             <Route path="/" element={<Home />} />
                             <Route path="/stats" element={<Stats />} />
                             <Route path="/profile" element={<Profile />} />
-                            <Route path="/friends" element={<Friends />} />
+                            {/*<Route path="/friends" element={<Friends />} />*/}
                             <Route path="/qr-code" element={<QRCode />} />
                             <Route path="/rating/:id" element={<Rating />} />
                             <Route path="/location" element={<Location />} />
