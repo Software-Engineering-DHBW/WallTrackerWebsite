@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider, createTheme} from '@mui/material/styles'
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Views/Home";
 import Stats from "./Views/Stats";
 import Profile from "./Views/Profile";
@@ -8,6 +8,12 @@ import Friends from "./Views/Friends";
 import TempDrawer from "./Components/TempDrawer";
 import QRCode from "./Components/QRCode";
 import Rating from "./Views/Rating";
+import Register from "./Views/Register";
+import Location from "./Views/Location"
+import SelectedLocation from "./Views/SelectedLocation";
+import LogIn from "./Components/LogIn";
+import BoulderOfLocation from "./Views/BoulderOfLocation";
+import RequireAuth from "./Components/RequireAuth";
 
 const custom_theme = createTheme({
     palette: {
@@ -35,12 +41,20 @@ function App() {
                     <TempDrawer />
 
                     <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/stats" element={<Stats />} />
-                        <Route path="/profile" element={<Profile />} />
-                        <Route path="/friends" element={<Friends />} />
-                        <Route path="/qr-code" element={<QRCode />} />
-                        <Route path="/rating/:id" element={<Rating />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/login" element={<LogIn />} />
+
+                        <Route element={<RequireAuth />}>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/stats" element={<Stats />} />
+                            <Route path="/profile" element={<Profile />} />
+                            {/*<Route path="/friends" element={<Friends />} />*/}
+                            <Route path="/qr-code" element={<QRCode />} />
+                            <Route path="/rating/:id" element={<Rating />} />
+                            <Route path="/location" element={<Location />} />
+                            <Route path="/location/selected/:id" element={<SelectedLocation />} />
+                            <Route path="/location/boulder/:id" element={<BoulderOfLocation />} />
+                        </Route>
                     </Routes>
                 </Router>
             </ThemeProvider>
